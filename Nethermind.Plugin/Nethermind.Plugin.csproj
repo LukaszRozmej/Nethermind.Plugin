@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+	
+		<ItemGroup>
+		<SourceRoot Include="$(MSBuildProjectDirectory)\" MappedPath="/_/"/>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+		<Reference Include=".\references\*.dll">
+			<Private>false</Private>
+		</Reference>
+	</ItemGroup>
+
+</Project>
