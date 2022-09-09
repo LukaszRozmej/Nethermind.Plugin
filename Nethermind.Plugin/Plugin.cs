@@ -1,5 +1,6 @@
 using Nethermind.Api;
 using Nethermind.Api.Extensions;
+using Nethermind.JsonRpc.Modules;
 
 namespace Nethermind.Plugin;
 
@@ -28,7 +29,8 @@ public class Plugin : INethermindPlugin
 
     public Task InitRpcModules()
     {
-        _api.SubscriptionFactory.RegisterSubscriptionType("safeBlockNumber", c => new SafeBlockNumberSubscription(c, _subscriptionBlockTree));
+        _api.SubscriptionFactory.RegisterSubscriptionType("safeBlock", c => new SafeBlockNumberSubscription(c, _subscriptionBlockTree));
+        _api.RpcModuleProvider!.Register(new SingletonModulePool<IMergeRpcModule>(new MergeRpcModule(_subscriptionBlockTree)));
         return Task.CompletedTask;
     }
 

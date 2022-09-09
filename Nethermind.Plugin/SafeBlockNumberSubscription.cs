@@ -22,9 +22,8 @@ public class SafeBlockNumberSubscription : Subscription
     {
         JsonRpcResult jsonRpcResult = CreateSubscriptionMessage(e.Hash);
         JsonRpcDuplexClient.SendJsonRpcResult(jsonRpcResult);
-    }
-
-    public override string Type => "safeBlockNumber";
+       }
+    public override string Type => "safeBlock";
 
     public override void Dispose()
     {
